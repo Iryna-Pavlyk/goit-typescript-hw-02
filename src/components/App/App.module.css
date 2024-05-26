@@ -1,0 +1,20 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: Snow;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 30px;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+  background: lightgray;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: SteelBlue;
+  border-radius: 50px;
+}
