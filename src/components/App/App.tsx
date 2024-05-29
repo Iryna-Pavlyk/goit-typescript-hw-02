@@ -51,7 +51,7 @@ const App = () => {
         setIsLoading(true);
         const data = await fetchPhotos(query, page);
         setShowBtn(data.total_pages && data.total_pages !== page);
-        setImages((prevImages) => {
+        setImages((prevImages: any): any => {
           return [...prevImages, ...data.results];
         });
       } catch (error) {
