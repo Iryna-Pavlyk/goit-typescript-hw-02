@@ -4,6 +4,16 @@ import { MdOutlineDescription } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 import css from "./ImageCard.module.css";
 
+interface Props {
+  item: {
+    alt_description: string;
+    urls: { small: string; regular: string };
+    user: { name: string; location: string };
+    likes: number;
+  };
+  onOpen: (regular: string, alt: string) => void;
+}
+
 const ImageCard = ({
   item: {
     alt_description: alt,
@@ -12,7 +22,7 @@ const ImageCard = ({
     likes,
   },
   onOpen,
-}) => {
+}: Props) => {
   return (
     <div className={css.item}>
       <img

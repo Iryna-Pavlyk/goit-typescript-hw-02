@@ -20,7 +20,7 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
 
-  const handleSearch = (newQuery) => {
+  const handleSearch = (newQuery: string): void => {
     setQuery(newQuery);
     setImages([]);
     setPage(1);
@@ -30,13 +30,13 @@ const App = () => {
     setPage(page + 1);
   };
 
-  const handleOpenModal = (imgUrl, imgAlt) => {
+  const handleOpenModal = (imgUrl: string, imgAlt: string): void => {
     setShowModal(true);
     setModalUrl(imgUrl);
     setModalAlt(imgAlt);
   };
 
-  const handleCloseModal = () => {
+  const handleCloseModal = (): void => {
     setShowModal(false);
   };
 
