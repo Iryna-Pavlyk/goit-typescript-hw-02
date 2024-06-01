@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { APIresponse, APIresults, fetchPhotos } from "../../gallery-api";
+import { APIresults, fetchPhotos } from "../../gallery-api";
 import css from "./App.module.css";
 import SearchBar from "../SearchBar/SearchBar";
 import ImageGallery from "../ImageGallery/ImageGallery";

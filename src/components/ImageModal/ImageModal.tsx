@@ -1,7 +1,14 @@
 import ReactModal from "react-modal";
 import css from "./ImageModal.module.css";
 
-const ImageModal = ({ modal, onClose, url, alt }) => {
+type Props = {
+  modal: boolean;
+  onClose: () => void;
+  url: string;
+  alt: string;
+};
+
+const ImageModal: React.FC<Props> = ({ modal, onClose, url, alt }: Props) => {
   return (
     <div>
       <ReactModal
