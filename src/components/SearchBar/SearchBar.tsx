@@ -3,8 +3,12 @@ import css from "./SearchBar.module.css";
 import { BiSolidZap } from "react-icons/bi";
 import { Formik, Form, Field } from "formik";
 
-const SearchBar = ({ onSubmit }) => {
-  const handleSubmit = (values, actions) => {
+type Props = {
+  onSubmit: (newQuery: string) => void;
+};
+
+const SearchBar: React.FC<Props> = ({ onSubmit }: Props) => {
+  const handleSubmit = (values: { query: string }, actions: any) => {
     if (values.query.trim() === "") {
       toast("Please enter a request", {
         duration: 3000,

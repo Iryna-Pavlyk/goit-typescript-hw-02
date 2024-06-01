@@ -1,7 +1,13 @@
 import css from "./ImageGallery.module.css";
 import ImageCard from "../ImageCard/ImageCard";
+import { APIresults } from "../../gallery-api";
 
-const ImageGallery = ({ items, onOpen }) => {
+type Props = {
+  items: APIresults[];
+  onOpen: (imgUrl: string, imgAlt: string) => void;
+};
+
+const ImageGallery: React.FC<Props> = ({ items, onOpen }: Props) => {
   return (
     <ul className={css.list}>
       {items.map((item) => {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchPhotos } from "../../gallery-api";
+import { APIresponse, APIresults, fetchPhotos } from "../../gallery-api";
 import css from "./App.module.css";
 import SearchBar from "../SearchBar/SearchBar";
 import ImageGallery from "../ImageGallery/ImageGallery";
@@ -8,8 +8,8 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "../ImageModal/ImageModal";
 
-const App = () => {
-  const [images, setImages] = useState([]);
+const App: React.FC = () => {
+  const [images, setImages] = useState<APIresults[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [showBtn, setShowBtn] = useState(false);
@@ -26,7 +26,7 @@ const App = () => {
     setPage(1);
   };
 
-  const handleLoadMore = () => {
+  const handleLoadMore = (): void => {
     setPage(page + 1);
   };
 
@@ -45,15 +45,17 @@ const App = () => {
       return;
     }
 
-    async function getImages() {
+    async function getImages(): Promise<void> {
       try {
         setError(false);
         setIsLoading(true);
-        const data = await fetchPhotos(query, page);
-        setShowBtn(data.total_pages && data.total_pages !== page);
-        setImages((prevImages: any): any => {
-          return [...prevImages, ...data.results];
-        });
+        const data: APIresults[] = await fetchPhotos(query, page);
+        if (data.length > 0) {
+          setShowBtn(true);
+          setImages((prevImages) => {
+            return [...prevImages, ...data];
+          });
+        }
       } catch (error) {
         setError(true);
       } finally {
